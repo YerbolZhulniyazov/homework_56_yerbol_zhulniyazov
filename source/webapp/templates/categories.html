@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Categories{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>{{ category }}</h1>
+    </div>
+    {% for product in products %}
+        <div class="container">
+         <div class="card mb-3 card-margin" style="max-width: 450px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ product.image }}" class="img-fluid rounded-start" alt="{{ product.name }}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <h5>Price: {{ product.price }}$</h5>
+                                <h5>Remaining: {{ product.remaining }} items</h5>
+                                <a href="{% url 'detail_product' product.pk %}">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    {% endfor %}
+{% endblock %}
